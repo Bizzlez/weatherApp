@@ -1,0 +1,41 @@
+#leftbox {
+    float: left;
+    /*background: Red; */
+    width: 25%;
+    height: 20vh;
+  }
+  
+  #middlebox {
+    float: left;
+    /*background: Green; */
+    width: 50%;
+    height: 20vh;
+  }
+  
+  #rightbox {
+    float: right;
+    
+    /*background: blue;  */
+    width: 25%;
+    height: 20vh;
+  }
+
+  #rightbox span{
+    display: flex;
+    margin-top: 10%;
+    flex-direction:column;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 110%;
+    color: rgba(87, 77, 51, 1);
+  }
+  span{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 77px;
+    color: rgba(87, 77, 51, 1);
+  }
