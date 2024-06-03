@@ -6,7 +6,7 @@ const Boxes = () => {
         <span> Sun</span>
       </div>
       <div id="middlebox">
-        <span>25C</span>
+        <span>25 °C</span>
       </div>
       <div id="rightbox">
         <span>
