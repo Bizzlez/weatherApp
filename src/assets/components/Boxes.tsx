@@ -1,19 +1,32 @@
 import "./Boxes.css";
+import ThermoIcon from "./icons/thermostat";
+import WaterIcon from "./icons/water";
+import WindIcon from "./icons/wind";
+import Day from "./icons/weather_icons/day.svg"
+import Cloud from "./icons/weather_icons/cloudy-day-1.svg"
+import Rain from "./icons/weather_icons/rainy-1.svg"
+import HeavyRain from "./icons/weather_icons/rainy-7.svg"
+
 const Boxes = () => {
   return (
     <div id="boxes">
       <div id="leftbox">
-        <span> Sun</span>
+        <div id="weatherIcons">
+        <img src={Rain} />
+        </div>
       </div>
       <div id="middlebox">
+        
         <span>25 °C</span>
       </div>
       <div id="rightbox">
-        <span>
-          a<i className="bi bi-thermometer-half"></i> feels like: 35C<br></br>
-          Humidty: 32% <br></br>
-          Wind: 11km/h<br></br>
-        </span>
+      
+        <div id="weatherDetails">
+          
+          <ThermoIcon/> &nbsp; feels like: &nbsp; &nbsp;<br></br> 35°C
+          <WaterIcon/> &nbsp; Humidity: &nbsp;&nbsp;&nbsp;<br></br> 32% 
+          <WindIcon/> &nbsp; Wind: &nbsp;&nbsp;<br></br> 11km/h
+          </div>
       </div>
     </div>
   );
