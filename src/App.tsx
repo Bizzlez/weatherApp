@@ -1,6 +1,7 @@
 import Boxes from "./assets/components/Boxes";
 import SearchBar from "./assets/components/SearchBar";
 import TimeLocation from "./assets/components/TimeLocation";
+import WeatherInfo from "./assets/components/WeatherInfo";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
                 <TimeLocation></TimeLocation>
               </div>
               <Boxes></Boxes>
+              <WeatherInfo />
             </div>
           </div>
           <div className="carousel-container">ye</div>

@@ -1,23 +1,22 @@
 #leftbox {
     float: left;
-    /* background: Red; */
-    width: 33.33%;
-    height: 20vh;
+    background: Red; 
+    width: 31.33%;
+    height: 12vh;
   }
   
   #middlebox {
     float: left;
-    margin-top: 10px;
-    /*background: Green; */
-    width: 33.33%;
-    height: 20vh;
+    background: Green;
+    width: 35.33%;
+    height: 12vh;
   }
   
   #rightbox {
     float: right;
-    /*background: grey;  */
+    background: grey; 
     width: 33.33%;
-    height: 20vh;
+    height: 12vh;
   }
 
   #weatherDetails  {
@@ -44,7 +43,8 @@
     height: 300px;
     width: auto;
   }
-  span{
+  #middlebox span:first-child{
+    margin-top: 2.5%;
     display: flex;
     flex-direction:column;
     text-align: center;

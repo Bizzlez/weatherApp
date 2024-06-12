@@ -1,0 +1,10 @@
+#weatherInfo{
+    display:block;
+    text-align: center;
+    font-weight: 2000;
+    font-size: 18px;
+    line-height: 80px;
+    opacity: 70%;
+    color: rgba(87, 77, 51, 1);
+    height: 23vh;
+  }
