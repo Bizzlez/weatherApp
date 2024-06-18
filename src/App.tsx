@@ -1,6 +1,9 @@
 import Boxes from "./assets/components/Boxes";
+import DailyExpand from "./assets/components/DailyExpand";
+import DailyForecast from "./assets/components/DailyForecast";
 import SearchBar from "./assets/components/SearchBar";
 import TimeLocation from "./assets/components/TimeLocation";
+
 import WeatherInfo from "./assets/components/WeatherInfo";
 
 const App = () => {
@@ -21,9 +24,10 @@ const App = () => {
               <WeatherInfo />
             </div>
           </div>
-          <div className="carousel-container">ye</div>
+          <div className="carousel-container">
+            <DailyExpand></DailyExpand>
+          </div>
         </div>
-        rah
       </div>
     </div>
   );
