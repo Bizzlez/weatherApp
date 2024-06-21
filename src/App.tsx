@@ -1,6 +1,7 @@
 import Boxes from "./assets/components/Boxes";
 import DailyExpand from "./assets/components/DailyExpand";
 import DailyForecast from "./assets/components/DailyForecast";
+import Footer from "./assets/components/Footer";
 import SearchBar from "./assets/components/SearchBar";
 import TimeLocation from "./assets/components/TimeLocation";
 

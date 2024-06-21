@@ -1,20 +1,20 @@
 #leftbox {
     float: left;
-    background: Red; 
+   /* background: Red;  */
     width: 31.33%;
     height: 12vh;
   }
   
   #middlebox {
     float: left;
-    background: Green;
+    /*background: Green;*/
     width: 35.33%;
     height: 12vh;
   }
   
   #rightbox {
     float: right;
-    background: grey; 
+   /* background: grey;  */
     width: 33.33%;
     height: 12vh;
   }
@@ -28,6 +28,7 @@
     font-size: 14px;
     line-height: 110%;
     color: rgba(87, 77, 51, 1);
+    
   }
   
   #weatherIcons{
@@ -52,4 +53,5 @@
     font-size: 44px;
     line-height: 77px;
     color: rgba(87, 77, 51, 1);
+    text-shadow:rgba(0, 0, 0, 1)
   }
