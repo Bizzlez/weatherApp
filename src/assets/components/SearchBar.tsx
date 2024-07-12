@@ -1,13 +1,34 @@
+import { ChangeEvent, useState } from "react";
 import "./SearchBar.css";
+import.meta.env
+const SearchBar = (): JSX.Element  => {
+  const [term, setTerm] = useState<string>('')
 
-const SearchBar = () => {
+  const[options,setOptions] = useState<[]>([])
+
+  const getSearchOptions =(value: string) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value.trim()}&limit=5&appid=${import.meta.env.REACT_APP_API_KEY}`).then(res => res.json().then(data =>setOptions(data)))
+  }
+
+const onInputChange = (e:ChangeEvent <HTMLInputElement>) =>{
+  const value = e.target.value.trim()
+  setTerm(value)
+  if (value ==='') return
+ getSearchOptions(value)
+}
+
+
   return (
     <form className="input">
       <input
         type="input"
         placeholder="Enter a country"
+        value={term}
         className="input-wrapper"
+        onChange={onInputChange}
       ></input>
+
+      
       <button className="input-submit" type="submit">
         <svg
           xmlns="http://www.w3.org/2000/svg"

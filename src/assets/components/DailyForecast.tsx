@@ -1,45 +1,194 @@
-import React from "react";
 import "./DailyForecast.css";
+import Rain from "./icons/weather_icons/rainy-1.svg";
 import Day from "./icons/weather_icons/day.svg";
 import Cloud from "./icons/weather_icons/cloudy-day-1.svg";
-import Rain from "./icons/weather_icons/rainy-1.svg";
 import HeavyRain from "./icons/weather_icons/rainy-7.svg";
+import humidGif from "./icons/humidity.gif";
+import thermoGif from "./icons/thermometer.gif";
+import windGif from "./icons/wind.gif";
 const DailyForecast = () => {
   return (
-    <div className="dailyforecast-container">
-      <div className="forecast-details">
-        <div>
-          <p> Monday</p>
-          <img src={Rain}></img>
-          <p>22C</p>
+    <div className="cardm">
+      {/* Monday Card */}
+      <div>
+        <div className="cardone">
+          <img src={Rain} />
+          <div className="degrees">23 °C</div>
+          <div className="day">Monday</div>
+        </div>
+        <div className="cardtwo">
+          <div className="lower">
+            <div className="humidity">
+              <img src={humidGif}></img>
+              <div className="humiditytext">
+                Humidity
+                <br />
+                30%
+              </div>
+            </div>
+            <div className="feelslike">
+              <img src={thermoGif}></img>
+              <div className="feelsliketext">
+                Feels like
+                <br />
+                21 °C
+              </div>
+            </div>
+            <div className="wind">
+              <img src={windGif}></img>
+              <div className="windtext">
+                Wind
+                <br />
+                10km/h
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="forecast-details">
-        <div>
-          <p> Tue</p>
-          <img src={Rain}></img>
-          <p>22C</p>
+
+      {/*Tuesdya */}
+      <div>
+        <div className="cardone">
+          <img src={Cloud} />
+          <div className="degrees">23 °C</div>
+          <div className="day">Tuesday</div>
+        </div>
+        <div className="cardtwo">
+          <div className="lower">
+            <div className="humidity">
+              <img src={humidGif}></img>
+              <div className="humiditytext">
+                Humidity
+                <br />
+                30%
+              </div>
+            </div>
+            <div className="feelslike">
+              <img src={thermoGif}></img>
+              <div className="feelsliketext">
+                Feels like
+                <br />
+                21 °C
+              </div>
+            </div>
+            <div className="wind">
+              <img src={windGif}></img>
+              <div className="windtext">
+                Wind
+                <br />
+                10km/h
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="forecast-details">
-        <div>
-          <p> Wed</p>
-          <img src={Rain}></img>
-          <p>22C</p>
+
+      {/*Wed */}
+      <div>
+        <div className="cardone">
+          <img src={HeavyRain} />
+          <div className="degrees">23 °C</div>
+          <div className="day">Wednesday</div>
+        </div>
+        <div className="cardtwo">
+          <div className="lower">
+            <div className="humidity">
+              <img src={humidGif}></img>
+              <div className="humiditytext">
+                Humidity
+                <br />
+                30%
+              </div>
+            </div>
+            <div className="feelslike">
+              <img src={thermoGif}></img>
+              <div className="feelsliketext">
+                Feels like
+                <br />
+                21 °C
+              </div>
+            </div>
+            <div className="wind">
+              <img src={windGif}></img>
+              <div className="windtext">
+                Wind
+                <br />
+                10km/h
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="forecast-details">
-        <div>
-          <p> Thu</p>
-          <img src={Rain}></img>
-          <p>22C</p>
+      {/*Thurs*/}
+      <div>
+        <div className="cardone">
+          <img src={Day} />
+          <div className="degrees">23 °C</div>
+          <div className="day">Thursday</div>
+        </div>
+        <div className="cardtwo">
+          <div className="lower">
+            <div className="humidity">
+              <img src={humidGif}></img>
+              <div className="humiditytext">
+                Humidity
+                <br />
+                30%
+              </div>
+            </div>
+            <div className="feelslike">
+              <img src={thermoGif}></img>
+              <div className="feelsliketext">
+                Feels like
+                <br />
+                21 °C
+              </div>
+            </div>
+            <div className="wind">
+              <img src={windGif}></img>
+              <div className="windtext">
+                Wind
+                <br />
+                10km/h
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="forecast-details">
-        <div>
-          <p> Fri</p>
-          <img src={Rain}></img>
-          <p>22C</p>
+      {/*Friday*/}
+      <div>
+        <div className="cardone">
+          <img src={Rain} />
+          <div className="degrees">23 °C</div>
+          <div className="day">Friday</div>
+        </div>
+        <div className="cardtwo">
+          <div className="lower">
+            <div className="humidity">
+              <img src={humidGif}></img>
+              <div className="humiditytext">
+                Humidity
+                <br />
+                30%
+              </div>
+            </div>
+            <div className="feelslike">
+              <img src={thermoGif}></img>
+              <div className="feelsliketext">
+                Feels like
+                <br />
+                21 °C
+              </div>
+            </div>
+            <div className="wind">
+              <img src={windGif}></img>
+              <div className="windtext">
+                Wind
+                <br />
+                10km/h
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

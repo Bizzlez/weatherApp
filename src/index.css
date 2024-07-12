@@ -48,7 +48,7 @@ h1{
 }
 
 .weather-card{
-  min-height: 20vh;
+  min-height: vh;
   min-width: 90%;
   display: flex;
   justify-content: center;
@@ -68,7 +68,7 @@ h1 {
 
 .card {
   width: 90%;
-  height: 235px;
+  height: 100%;
   position: relative;
   padding: 25px;
   margin-top: 20px;

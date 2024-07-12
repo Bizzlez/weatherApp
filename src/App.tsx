@@ -1,13 +1,17 @@
+import { ChangeEvent, useState } from "react";
 import Boxes from "./assets/components/Boxes";
-import DailyExpand from "./assets/components/DailyExpand";
 import DailyForecast from "./assets/components/DailyForecast";
 import Footer from "./assets/components/Footer";
+import HourlyForecast from "./assets/components/HourlyForecast";
 import SearchBar from "./assets/components/SearchBar";
 import TimeLocation from "./assets/components/TimeLocation";
-
 import WeatherInfo from "./assets/components/WeatherInfo";
 
-const App = () => {
+// https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+
+const App = (): JSX.Element => {
+
   return (
     <div>
       <h1 className="WeatherApp">WeatherApp</h1>
@@ -23,10 +27,12 @@ const App = () => {
               </div>
               <Boxes></Boxes>
               <WeatherInfo />
+              <HourlyForecast></HourlyForecast>
             </div>
           </div>
           <div className="carousel-container">
-            <DailyExpand></DailyExpand>
+            <DailyForecast></DailyForecast>
+            
           </div>
         </div>
       </div>
