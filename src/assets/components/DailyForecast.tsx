@@ -6,15 +6,41 @@ import HeavyRain from "./icons/weather_icons/rainy-7.svg";
 import humidGif from "./icons/humidity.gif";
 import thermoGif from "./icons/thermometer.gif";
 import windGif from "./icons/wind.gif";
-const DailyForecast = () => {
+
+import { forecastType } from "./types";
+import { filter } from "lodash";
+type Props = {
+  data: forecastType  | null
+}
+
+const DailyForecast = ({data}:Props) => {
+
+
+  // Default to an empty array if data is null
+  const filteredData = (data?.list || []).filter((forecast) => {
+    const dtTxtDate = new Date(forecast.dt_txt);
+
+    // Check if the hours, minutes, and seconds are all 0
+    return dtTxtDate.getHours() === 0 && dtTxtDate.getMinutes() === 0 && dtTxtDate.getSeconds() === 0;
+  });
+
+  // Extract the day of the week from the dt_txt
+  filteredData.forEach((forecast) => {
+    const dtTxtDate = new Date(forecast.dt_txt);
+    const dayOfWeek = dtTxtDate.toLocaleString('en-US', { weekday: 'long' });
+    forecast.dayOfWeek = dayOfWeek;
+  });
+
+  console.log(filteredData)
   return (
     <div className="cardm">
-      {/* Monday Card */}
+      
+      {/*Day 1*/}
       <div>
         <div className="cardone">
           <img src={Rain} />
-          <div className="degrees">23 °C</div>
-          <div className="day">Monday</div>
+          <div className="degrees">{Math.round(filteredData[0]?.main.temp)} °C</div>
+          <div className="day"> {filteredData[0]?.dayOfWeek} </div>
         </div>
         <div className="cardtwo">
           <div className="lower">
@@ -23,7 +49,7 @@ const DailyForecast = () => {
               <div className="humiditytext">
                 Humidity
                 <br />
-                30%
+                {filteredData[0]?.main.humidity} %
               </div>
             </div>
             <div className="feelslike">
@@ -31,7 +57,7 @@ const DailyForecast = () => {
               <div className="feelsliketext">
                 Feels like
                 <br />
-                21 °C
+                {Math.round(filteredData[0]?.main.feels_like)} °C
               </div>
             </div>
             <div className="wind">
@@ -39,19 +65,19 @@ const DailyForecast = () => {
               <div className="windtext">
                 Wind
                 <br />
-                10km/h
+                {Math.round(filteredData[0]?.wind.speed)} km/h
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/*Tuesdya */}
+      {/*Day 2 */}
       <div>
         <div className="cardone">
           <img src={Cloud} />
-          <div className="degrees">23 °C</div>
-          <div className="day">Tuesday</div>
+          <div className="degrees">{Math.round(filteredData[1]?.main.temp)} °C</div>
+          <div className="day">{filteredData[1]?.dayOfWeek}</div>
         </div>
         <div className="cardtwo">
           <div className="lower">
@@ -60,7 +86,7 @@ const DailyForecast = () => {
               <div className="humiditytext">
                 Humidity
                 <br />
-                30%
+                {filteredData[1]?.main.humidity} %
               </div>
             </div>
             <div className="feelslike">
@@ -68,7 +94,7 @@ const DailyForecast = () => {
               <div className="feelsliketext">
                 Feels like
                 <br />
-                21 °C
+                {Math.round(filteredData[1]?.main.feels_like)} °C
               </div>
             </div>
             <div className="wind">
@@ -76,19 +102,19 @@ const DailyForecast = () => {
               <div className="windtext">
                 Wind
                 <br />
-                10km/h
+                {Math.round(filteredData[1]?.wind.speed)} km/h
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/*Wed */}
+      {/*Day 3 */}
       <div>
         <div className="cardone">
           <img src={HeavyRain} />
-          <div className="degrees">23 °C</div>
-          <div className="day">Wednesday</div>
+          <div className="degrees">{Math.round(filteredData[2]?.main.temp)} °C</div>
+          <div className="day">{filteredData[2]?.dayOfWeek}</div>
         </div>
         <div className="cardtwo">
           <div className="lower">
@@ -97,7 +123,7 @@ const DailyForecast = () => {
               <div className="humiditytext">
                 Humidity
                 <br />
-                30%
+                {filteredData[2]?.main.humidity} %
               </div>
             </div>
             <div className="feelslike">
@@ -105,7 +131,7 @@ const DailyForecast = () => {
               <div className="feelsliketext">
                 Feels like
                 <br />
-                21 °C
+                {Math.round(filteredData[2]?.main.feels_like)} °C
               </div>
             </div>
             <div className="wind">
@@ -113,18 +139,18 @@ const DailyForecast = () => {
               <div className="windtext">
                 Wind
                 <br />
-                10km/h
+                {Math.round(filteredData[2]?.wind.speed)} km/h
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/*Thurs*/}
+      {/*Day 4*/}
       <div>
         <div className="cardone">
           <img src={Day} />
-          <div className="degrees">23 °C</div>
-          <div className="day">Thursday</div>
+          <div className="degrees">{Math.round(filteredData[3]?.main.temp)} °C</div>
+          <div className="day">{filteredData[3]?.dayOfWeek}</div>
         </div>
         <div className="cardtwo">
           <div className="lower">
@@ -133,7 +159,7 @@ const DailyForecast = () => {
               <div className="humiditytext">
                 Humidity
                 <br />
-                30%
+                {filteredData[3]?.main.humidity} %
               </div>
             </div>
             <div className="feelslike">
@@ -141,26 +167,26 @@ const DailyForecast = () => {
               <div className="feelsliketext">
                 Feels like
                 <br />
-                21 °C
+                {Math.round(filteredData[3]?.main.feels_like)} °C
               </div>
             </div>
             <div className="wind">
               <img src={windGif}></img>
               <div className="windtext">
-                Wind
+                Wind nb
                 <br />
-                10km/h
+                {Math.round(filteredData[3]?.wind.speed)} km/h
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/*Friday*/}
+      {/* Day 5*/}
       <div>
         <div className="cardone">
           <img src={Rain} />
-          <div className="degrees">23 °C</div>
-          <div className="day">Friday</div>
+          <div className="degrees">{Math.round(filteredData[4]?.main.temp)} °C</div>
+          <div className="day">{filteredData[4]?.dayOfWeek}</div>
         </div>
         <div className="cardtwo">
           <div className="lower">
@@ -169,7 +195,7 @@ const DailyForecast = () => {
               <div className="humiditytext">
                 Humidity
                 <br />
-                30%
+                {filteredData[4]?.main.humidity} %
               </div>
             </div>
             <div className="feelslike">
@@ -177,15 +203,15 @@ const DailyForecast = () => {
               <div className="feelsliketext">
                 Feels like
                 <br />
-                21 °C
+                {Math.round(filteredData[4]?.main.feels_like)} °C
               </div>
             </div>
             <div className="wind">
               <img src={windGif}></img>
               <div className="windtext">
-                Wind
+                Wind 
                 <br />
-                10km/h
+                {Math.round(filteredData[4]?.wind.speed)} km/h
               </div>
             </div>
           </div>

@@ -6,37 +6,44 @@ import HourlyForecast from "./assets/components/HourlyForecast";
 import SearchBar from "./assets/components/SearchBar";
 import TimeLocation from "./assets/components/TimeLocation";
 import WeatherInfo from "./assets/components/WeatherInfo";
-
+import useForecast from "./assets/components/Hooks/useForecast";
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 
-const App = (): JSX.Element => {
-
+const App = ()=> {
+    const {term,forecast,onInputChange,onSubmit,city} = useForecast();
+    
   return (
     <div>
       <h1 className="WeatherApp">WeatherApp</h1>
       <div className="container-one">
         <div className="container-searchbar">
-          <SearchBar></SearchBar>
+
+          
+          <SearchBar term={term} onInputChange={onInputChange} onSubmit ={onSubmit}/>
+
         </div>
         <div className="container-two">
+          
           <div className="weather-card">
             <div className="card">
               <div className="card-header">
-                <TimeLocation></TimeLocation>
+                <TimeLocation data = {forecast} cityTime= {city}/>
               </div>
-              <Boxes></Boxes>
-              <WeatherInfo />
-              <HourlyForecast></HourlyForecast>
+              <Boxes data = {forecast}></Boxes>
+              <WeatherInfo data ={forecast} cityTime = {city} />
+              <HourlyForecast data = {forecast}></HourlyForecast>
             </div>
           </div>
           <div className="carousel-container">
-            <DailyForecast></DailyForecast>
+            
+            < DailyForecast data = {forecast}/>
+            
             
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 

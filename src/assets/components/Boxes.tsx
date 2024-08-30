@@ -7,7 +7,14 @@ import Cloud from "./icons/weather_icons/cloudy-day-1.svg";
 import Rain from "./icons/weather_icons/rainy-1.svg";
 import HeavyRain from "./icons/weather_icons/rainy-7.svg";
 
-const Boxes = () => {
+
+import { forecastType } from "./types";
+type Props = {
+  data: forecastType 
+}
+const Boxes = ({data}:Props) => {
+  
+
   return (
     <div id="boxes">
       <div id="leftbox">
@@ -16,14 +23,14 @@ const Boxes = () => {
         </div>
       </div>
       <div id="middlebox">
-        <span>25 °C</span>
+        <span>{Math.round(data?.list[0].main.temp)}°C</span>
         <br></br>
       </div>
       <div id="rightbox">
         <div id="weatherDetails">
-          <ThermoIcon /> &nbsp; feels like: &nbsp; &nbsp;<br></br> 35°C
-          <WaterIcon /> &nbsp; Humidity: &nbsp;&nbsp;&nbsp;<br></br> 32%
-          <WindIcon /> &nbsp; Wind: &nbsp;&nbsp;<br></br> 11km/h
+          <ThermoIcon /> &nbsp; feels like: &nbsp; &nbsp;<br></br> {Math.round(data?.list[0].main.feels_like)}°C
+          <WaterIcon /> &nbsp; Humidity: &nbsp;&nbsp;&nbsp;<br></br> {data?.list[0].main.humidity}%
+          <WindIcon /> &nbsp; Wind: &nbsp;&nbsp;<br></br> {data?.list[0].wind.speed}km/h
         </div>
       </div>
     </div>

@@ -1,0 +1,192 @@
+import { ChangeEvent, useState } from "react";
+import Boxes from "./assets/components/Boxes";
+import DailyForecast from "./assets/components/DailyForecast";
+import Footer from "./assets/components/Footer";
+import HourlyForecast from "./assets/components/HourlyForecast";
+import SearchBar from "./assets/components/SearchBar";
+import TimeLocation from "./assets/components/TimeLocation";
+import WeatherInfo from "./assets/components/WeatherInfo";
+import useForecast from "./assets/components/Hooks/useForecast";
+// https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+
+const App = (): JSX.Element => {
+    const {forecast} = useForecast();
+  return (
+    <div>
+      <h1 className="WeatherApp">WeatherApp</h1>
+      <div className="container-one">
+        <div className="container-searchbar">
+          <SearchBar ></SearchBar>
+          
+        
+        </div>
+        <div className="container-two">
+          <div className="weather-card">
+            <div className="card">
+              <div className="card-header">
+                <TimeLocation></TimeLocation>
+              </div>
+              <Boxes></Boxes>
+              <WeatherInfo />
+              <HourlyForecast></HourlyForecast>
+            </div>
+          </div>
+          <div className="carousel-container">
+            
+            <DailyForecast data={forecast}></DailyForecast>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
+
+
+
+
+---
+import { ChangeEvent, useState } from "react";
+import Boxes from "./assets/components/Boxes";
+import DailyForecast from "./assets/components/DailyForecast";
+import Footer from "./assets/components/Footer";
+import HourlyForecast from "./assets/components/HourlyForecast";
+import SearchBar from "./assets/components/SearchBar";
+import TimeLocation from "./assets/components/TimeLocation";
+import WeatherInfo from "./assets/components/WeatherInfo";
+import useForecast from "./assets/components/Hooks/useForecast";
+// https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+
+
+const App = (): JSX.Element => {
+    const {term,forecast,onInputChange,onSubmit} = useForecast();
+  return (
+    <div>
+      <h1 className="WeatherApp">WeatherApp</h1>
+      <div className="container-one">
+        <div className="container-searchbar">
+
+          {forecast?( <DailyForecast data = {forecast} />): (
+          <SearchBar 
+            term ={term}
+            onInputChange={onInputChange}
+            onSubmit={onSubmit}/>)}
+          </div></div>
+        {/*
+        </div>
+        <div className="container-two">
+          <div className="weather-card">
+            <div className="card">
+              <div className="card-header">
+                <TimeLocation></TimeLocation>
+              </div>
+              <Boxes></Boxes>
+              <WeatherInfo />
+              <HourlyForecast></HourlyForecast>
+            </div>
+          </div>
+          <div className="carousel-container">
+            
+            <DailyForecast data={forecast}></DailyForecast>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div> */} </div>
+  );
+};
+
+export default App;
+----------------------------------------------
+
+import React from 'react'
+import { ChangeEvent, useState } from "react";
+import { cityType, forecastType,  } from '../types';
+
+import.meta.env
+const useForecast = () => {
+  
+    const [term, setTerm] = useState<string>('')
+    const [city,setCity]  = useState <cityType | null> (null)
+    const [forecast,setForecast] = useState< forecastType| null>(null)
+    
+    const getSearchOptions = async (value: string) => {
+      try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value.trim()}&units=metric&appid=${import.meta.env.REACT_APP_API_KEY}`);
+        if (!response.ok) {
+          throw new Error(`Error fetching weather data: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setCity(data);
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle errors more gracefully in your application
+      }
+    };
+    const getHourlyForecast = async () => {
+      if (!city?.coord) return; // Check if location data is available
+  
+      try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.coord.lat}&lon=${city.coord.lon}&units=metric&appid=${import.meta.env.REACT_APP_API_KEY}`);
+        if (!response.ok) {
+          throw new Error(`Error fetching hourly forecast: ${response.statusText}`);
+        }
+        const data = await response.json();
+        
+        const forecastData={
+          ...data.city,
+          list: data.list.slice(0,16),
+        }
+        setForecast(forecastData);
+        
+
+
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle errors more gracefully in your application
+      }
+    };
+
+  // Call getSearchOptions to fetch data for "Hong Kong" initially
+    React.useEffect(() => {
+      getSearchOptions(term);
+    }, [term]); // Re-run getSearchOptions only when term changes
+
+    React.useEffect(() => {
+      if (forecast) {
+        console.log(forecast);
+      }
+    }, [forecast]);
+    
+  const onSubmit = async () => {
+    if (!term) return;
+    await getSearchOptions(term);
+    if (city) {
+      await getHourlyForecast();
+      
+    }
+    
+  };
+  
+  
+  const onInputChange = (e:ChangeEvent <HTMLInputElement>) =>{
+    const value = e.target.value
+    setTerm(value)
+    if (value ==='') return
+   getSearchOptions(value.trim())
+   
+  };
+
+  return{
+    term,forecast,onInputChange,onSubmit
+  };
+  
+
+};
+export default useForecast  
