@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./SearchBar.css";
 interface SearchBarProps {
   term: string;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -8,6 +8,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ term, onInputChange, onSubmit }) => {
   return (
+    
     <form className="input" onSubmit={(e) => e.preventDefault()}>
       <input
         type="text"

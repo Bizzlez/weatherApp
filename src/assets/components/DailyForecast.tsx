@@ -8,7 +8,7 @@ import thermoGif from "./icons/thermometer.gif";
 import windGif from "./icons/wind.gif";
 
 import { forecastType } from "./types";
-import { filter } from "lodash";
+
 type Props = {
   data: forecastType  | null
 }
@@ -38,7 +38,9 @@ const DailyForecast = ({data}:Props) => {
       {/*Day 1*/}
       <div>
         <div className="cardone">
-          <img src={Rain} />
+          <div>  {filteredData[0]?.weather[0].main === 'Rain' && <img src={Rain} alt="Rain Icon" />}
+                 {filteredData[0]?.weather[0].main.includes('Cloud')&& <img src={Cloud} alt="Cloudy Icon" />}
+                 {filteredData[0]?.weather[0].main === 'Sunny' && <img src={Day} alt="Sunny Icon" />}</div>
           <div className="degrees">{Math.round(filteredData[0]?.main.temp)} °C</div>
           <div className="day"> {filteredData[0]?.dayOfWeek} </div>
         </div>
