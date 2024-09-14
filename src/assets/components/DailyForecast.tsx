@@ -1,8 +1,5 @@
 import "./DailyForecast.css";
-import Rain from "./icons/weather_icons/rainy-1.svg";
-import Day from "./icons/weather_icons/day.svg";
-import Cloud from "./icons/weather_icons/cloudy-day-1.svg";
-import HeavyRain from "./icons/weather_icons/rainy-7.svg";
+import icons from "./icons/weatherIcons";
 import humidGif from "./icons/humidity.gif";
 import thermoGif from "./icons/thermometer.gif";
 import windGif from "./icons/wind.gif";
@@ -32,15 +29,44 @@ const DailyForecast = ({data}:Props) => {
   });
 
   console.log(filteredData)
+  function getIcon(iconCode :string) {
+    switch (iconCode) {
+      case '01d':
+        return 'Sunny';
+      case '01n':
+        return 'Night';
+      case '02d':
+        return 'LightCloud';
+      case '02n':
+        return 'NightCloud';
+      case '03':
+      case '04':
+        return 'Cloudy';
+      case '09':
+        return 'HeavyRain';
+      case '10d':
+        return 'Rain';
+      case '10n':
+        return 'RainyNight';
+      case '11':
+        return 'Thunder';
+      case '13':
+        return 'Snowy';
+      default:
+        return 'Sunny'; // You can provide a default icon here
+    }
+  }
   return (
     <div className="cardm">
       
       {/*Day 1*/}
       <div>
         <div className="cardone">
-          <div>  {filteredData[0]?.weather[0].main === 'Rain' && <img src={Rain} alt="Rain Icon" />}
-                 {filteredData[0]?.weather[0].main.includes('Cloud')&& <img src={Cloud} alt="Cloudy Icon" />}
-                 {filteredData[0]?.weather[0].main === 'Sunny' && <img src={Day} alt="Sunny Icon" />}</div>
+        <div>
+  {filteredData[0]?.weather[0].icon && (
+    <img src={icons[getIcon(filteredData[0]?.weather[0].icon)]} />
+  )}
+</div>
           <div className="degrees">{Math.round(filteredData[0]?.main.temp)} °C</div>
           <div className="day"> {filteredData[0]?.dayOfWeek} </div>
         </div>
@@ -77,7 +103,11 @@ const DailyForecast = ({data}:Props) => {
       {/*Day 2 */}
       <div>
         <div className="cardone">
-          <img src={Cloud} />
+        <div>
+  {filteredData[1]?.weather[0].icon && (
+    <img src={icons[getIcon(filteredData[1]?.weather[0].icon)]} />
+  )}
+</div>
           <div className="degrees">{Math.round(filteredData[1]?.main.temp)} °C</div>
           <div className="day">{filteredData[1]?.dayOfWeek}</div>
         </div>
@@ -114,7 +144,11 @@ const DailyForecast = ({data}:Props) => {
       {/*Day 3 */}
       <div>
         <div className="cardone">
-          <img src={HeavyRain} />
+        <div>
+  {filteredData[2]?.weather[0].icon && (
+    <img src={icons[getIcon(filteredData[2]?.weather[0].icon)]} />
+  )}
+</div>
           <div className="degrees">{Math.round(filteredData[2]?.main.temp)} °C</div>
           <div className="day">{filteredData[2]?.dayOfWeek}</div>
         </div>
@@ -150,7 +184,11 @@ const DailyForecast = ({data}:Props) => {
       {/*Day 4*/}
       <div>
         <div className="cardone">
-          <img src={Day} />
+        <div>
+  {filteredData[3]?.weather[0].icon && (
+    <img src={icons[getIcon(filteredData[3]?.weather[0].icon)]} />
+  )}
+</div>
           <div className="degrees">{Math.round(filteredData[3]?.main.temp)} °C</div>
           <div className="day">{filteredData[3]?.dayOfWeek}</div>
         </div>
@@ -186,7 +224,11 @@ const DailyForecast = ({data}:Props) => {
       {/* Day 5*/}
       <div>
         <div className="cardone">
-          <img src={Rain} />
+        <div>
+  {filteredData[4]?.weather[0].icon && (
+    <img src={icons[getIcon(filteredData[4]?.weather[0].icon)]} />
+  )}
+</div>
           <div className="degrees">{Math.round(filteredData[4]?.main.temp)} °C</div>
           <div className="day">{filteredData[4]?.dayOfWeek}</div>
         </div>

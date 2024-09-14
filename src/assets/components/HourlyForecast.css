@@ -1,11 +1,10 @@
-.hr {
-    border: 0;
-    clear:both;
-    display:block;
-    width: 96%;              
-    height: 1px;
-  }
-
+.forecast-separator {
+  width: 96%;
+  height: 1px;
+  background-color: black;
+  margin: 10px 0; /* Adds some space above and below */
+  opacity: 30%;
+}
 #HourlyForecastTitle{
     color: rgba(87, 77, 51, 1);
 }
