@@ -4,9 +4,10 @@ interface SearchBarProps {
   term: string;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: () => void;
+
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ term, onInputChange, onSubmit }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ term, onInputChange, onSubmit  }) => {
   return (
     
     <form className="input" onSubmit={(e) => e.preventDefault()}>

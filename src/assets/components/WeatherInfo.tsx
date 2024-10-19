@@ -11,20 +11,23 @@ type Props = {
 
 
 const WeatherInfo = ({data,cityTime}:Props) => {
+  //displays current city's sunrise 
   const localSunriseTime = new Date(
     (data?.sunrise + cityTime?.timezone) * 1000 +
       new Date().getTimezoneOffset() * 60 * 1000
   );
+  //displays current city's sunset
   const localSunsetTime = new Date(
     (data?.sunset + cityTime?.timezone) * 1000 +
       new Date().getTimezoneOffset() * 60 * 1000
   );
   return (
     <div id="weatherInfo">
-      <SunriseIcon /> &nbsp;{`Sunrise: ${localSunriseTime.toLocaleString('en-US', {hour: '2-digit', minute:'2-digit'})}`} | <SunsetIcon /> &nbsp;{`Sunset: ${localSunsetTime.toLocaleString('en-US', {hour: '2-digit', minute:'2-digit'})}`}
-      | <ThermoHighIcon />
-      &nbsp; High: {Math.ceil(data?.list[0].main.temp_max)} °C | <ThermoLowIcon />
-      &nbsp; Low: {Math.floor(data?.list[0].main.temp_min)} °C
+      <SunriseIcon /> &nbsp;{`Sunrise: ${localSunriseTime.toLocaleString('en-US', {hour: '2-digit', minute:'2-digit'})}`} &nbsp;&nbsp; <SunsetIcon /> &nbsp;{`Sunset: ${localSunsetTime.toLocaleString('en-US', {hour: '2-digit', minute:'2-digit'})}`}
+      &nbsp;&nbsp; 
+      {/* current city's high and low temperatures */}
+      <ThermoHighIcon />&nbsp; High: {Math.ceil(data?.list[0].main.temp_max)} °C &nbsp;&nbsp;
+      <ThermoLowIcon />&nbsp; Low: {Math.floor(data?.list[0].main.temp_min)} °C
     </div>
   );
 };

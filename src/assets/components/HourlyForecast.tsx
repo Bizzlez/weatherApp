@@ -12,12 +12,13 @@ const HourlyForecast = ({ data }: Props) => {
       <div id="HourlyForecastTitle">Hourly Forecast</div>
       <div className="forecast-separator" />
       <div className="HourlyForecastContainer">
+        {/* Filters the initial 5 entries from the API response to showcase the next 5 weather forecasts, each representing a 3-hour increment */}
         {data?.list.slice(0, 5).map((hourData) => (
           <div key={hourData.dt}>
             <div>{new Date(hourData.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
             <div>
               {hourData.weather[0].icon && (
-                <>
+                <> {/* changes weather icon based on the icon fetched in the API*/}
                   {hourData.weather[0].icon === '01d' && <img src={icons.Sunny} />}
                   {hourData.weather[0].icon === '01n' && <img src={icons.Night} />}
                   {hourData.weather[0].icon === '02d' && <img src={icons.LightCloud} />}

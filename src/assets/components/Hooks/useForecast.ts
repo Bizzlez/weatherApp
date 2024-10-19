@@ -1,85 +1,86 @@
 import React, { useState } from 'react';
 import { ChangeEvent } from "react";
 import { cityType, forecastType } from '../types';
-import.meta.env
-const useForecast = () => {
-  const [term, setTerm] = useState<string>('');
-  const [city, setCity] = useState<cityType | null>(null);
-  const [forecast, setForecast] = useState<forecastType | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
+// Custom hook for fetching weather data
+const useForecast = () => {
+  // State variables
+  const [term, setTerm] = useState<string>(''); // Search term for the city
+  const [city, setCity] = useState<cityType | null>(null); // City data from API
+  const [forecast, setForecast] = useState<forecastType | null>(null); // Forecast data 
+  const [code, setCode] = useState<string | null>(null); // Weather icon ID for background video
+
+  // Function to fetch city data based on search term
   const getSearchOptions = async (value: string) => {
     try {
-      setIsLoading(true);
+      // Fetch weather data from OpenWeather API
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value.trim()}&units=metric&appid=${import.meta.env.REACT_APP_API_KEY}`);
       if (!response.ok) {
         throw new Error(`Error fetching weather data: ${response.statusText}`);
       }
       const data = await response.json();
-      setCity(data);
-      console.log(city);
+      setCity(data); // Set city data state
+      const iconId = data.weather[0].icon; // Get the weather icon ID
+      setCode(iconId); // Set icon ID state
     } catch (error) {
       console.error('Error:', error);
-      // Handle errors more gracefully in your application
-    } finally {
-      setIsLoading(false);
+      // Handle errors gracefully in your application
     }
   };
 
+  // Function to fetch hourly forecast based on city coordinates
   const getHourlyForecast = async () => {
-    if (!city?.coord) return; // Check if location data is available
+    if (!city?.coord) return; // Ensure location data is available
 
     try {
-      setIsLoading(true);
+      // Fetch hourly forecast data from OpenWeather API
       const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.coord.lat}&lon=${city.coord.lon}&units=metric&appid=${import.meta.env.REACT_APP_API_KEY}`);
       if (!response.ok) {
         throw new Error(`Error fetching hourly forecast: ${response.statusText}`);
       }
       const data = await response.json();
 
+      // Prepare forecast data by slicing the list to the first 40 entries
       const forecastData = {
         ...data.city,
         list: data.list.slice(0, 40),
       };
-      setForecast(forecastData);
+      setForecast(forecastData); // Set forecast data state
     } catch (error) {
-      console.error('Error:',   
- error);
-      // Handle errors more gracefully in your application
-    } finally {
-      setIsLoading(false);
+      console.error('Error:', error);
+      // Handle errors gracefully in your application
     }
   };
 
-    React.useEffect(() => {
-      if (forecast) {
-        console.log(forecast);
-      }
-    }, [forecast]);
-    //onsubmit searches
+  // Effect to log forecast data when it changes
+  React.useEffect(() => {
+    if (forecast) {
+      console.log(forecast); // Log forecast data for debugging
+    } 
+  }, [term, city, forecast]); // Dependencies for the effect
+
+  // Function to handle form submission
   const onSubmit = async () => {
-    if (!term) return;
-    await getSearchOptions(term);
+    if (!term) return; // Prevent submission if no term is entered
+    await getSearchOptions(term); // Fetch city data
     if (city) {
-      await getHourlyForecast();
-      
+      await getHourlyForecast(); // Fetch forecast data if city is valid
     }
-    
   };
-  
-  //sets the term for whenever the user inputs a character
+
+  // Function to handle input changes
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setTerm(value);
+    const value = e.target.value; // Get the input value
+    setTerm(value); // Update search term state
     if (value.trim()) {
-      getSearchOptions(value);
+      getSearchOptions(value); // Fetch suggestions based on input
     }
   };
 
-  return{
-    term,forecast,onInputChange,onSubmit,isLoading,city
+  // Return states and functions for use in components
+  return {
+    term, forecast, onInputChange, onSubmit, city, code
   };
-  
-
 };
-export default useForecast  
+
+export default useForecast;

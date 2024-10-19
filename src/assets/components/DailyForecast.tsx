@@ -28,7 +28,7 @@ const DailyForecast = ({data}:Props) => {
     forecast.dayOfWeek = dayOfWeek;
   });
 
-  console.log(filteredData)
+ //switch statement that changes weather icon based on icon data fetched from API
   function getIcon(iconCode :string) {
     switch (iconCode) {
       case '01d':
@@ -53,12 +53,13 @@ const DailyForecast = ({data}:Props) => {
       case '13':
         return 'Snowy';
       default:
-        return 'Sunny'; // You can provide a default icon here
+        return 'Sunny'; //default icon
     }
   }
   return (
     <div className="cardm">
-      
+      {/* Displays next 5 days weather forcast*/}
+
       {/*Day 1*/}
       <div>
         <div className="cardone">
@@ -181,6 +182,7 @@ const DailyForecast = ({data}:Props) => {
           </div>
         </div>
       </div>
+      
       {/*Day 4*/}
       <div>
         <div className="cardone">
@@ -213,7 +215,7 @@ const DailyForecast = ({data}:Props) => {
             <div className="wind">
               <img src={windGif}></img>
               <div className="windtext">
-                Wind nb
+                Wind 
                 <br />
                 {Math.round(filteredData[3]?.wind.speed)} km/h
               </div>
@@ -221,6 +223,7 @@ const DailyForecast = ({data}:Props) => {
           </div>
         </div>
       </div>
+
       {/* Day 5*/}
       <div>
         <div className="cardone">

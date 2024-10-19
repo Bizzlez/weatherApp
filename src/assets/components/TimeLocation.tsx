@@ -1,5 +1,5 @@
 import { cityType, forecastType } from "./types";
-
+import "./TimeLocation.css";
   type Props = {
     data: forecastType 
     cityTime: cityType
@@ -10,7 +10,7 @@ import { cityType, forecastType } from "./types";
         new Date().getTimezoneOffset() * 60 * 1000
     );
   return (
-    <div>
+    <div id="timeLocationDetails" >
       {" "}
       <span>{localTime.toLocaleString("en-US", {
           weekday: "long",
@@ -23,7 +23,11 @@ import { cityType, forecastType } from "./types";
           minute: "2-digit",
           hour12: true,
         })}</span> <br></br>
-      <span> {data?.name}, {data?.country} </span>
+      <span>
+  {data?.name}{data && data.name && data.country ? ', ' : ''}{data?.country}
+</span>
+      
+      
     </div>
   );
 };
