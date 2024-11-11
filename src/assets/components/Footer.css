@@ -9,3 +9,52 @@
     font-size: 0.8rem;
   }
   
+
+
+
+
+
+  @media (max-width: 600px) {
+    .footer {
+      height: 20px;
+      font-size: 0.8rem;
+      bottom:-40px
+    }
+    
+  
+  }
+  @media (min-width: 601px) {
+    .footer {
+      height: 20px;
+      font-size: 0.8rem;
+      bottom:-40px
+    }
+    
+  }
+  @media (min-width: 768px) {
+    .footer {
+      height: 20px;
+      font-size: 0.8rem;
+      bottom:-40px
+    }
+    
+  }
+  @media (min-width: 992px) {
+    .footer {
+      height: 20px;
+      font-size: 0.8rem;
+      bottom:-25%
+    }
+    
+
+  }
+  @media (min-width: 1200px) {
+    .footer {
+      height: 20px;
+      font-size: 0.8rem;
+      bottom:-90px;
+    }
+    
+    }
+  
+  

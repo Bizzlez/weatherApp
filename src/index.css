@@ -7,6 +7,7 @@
 
 h1{
   text-align: center;
+
 }
 .container-one{
   display:flex;
@@ -151,3 +152,101 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+@media (max-width: 600px) {
+  .WeatherApp{
+    align-items: center;
+    height: 10px;
+    background-color: blue;
+
+  }
+  
+  .container-searchbar{
+    width: 90%;
+    height: 55px;
+    
+   
+  }
+
+}
+
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .WeatherApp{
+    align-items: center;
+    height: 20px;
+    background-color: green;
+  }
+   
+
+  .container-searchbar{
+    width: 90%;
+    height: 55px;
+   
+  }
+}
+@media (min-width: 768px) and (max-width:991px){
+  .WeatherApp{
+    align-items: center;
+    height: 30px;
+    background-color: orange;
+  }
+    
+
+  .container-searchbar{
+    width: 90%;
+    height: 55px;
+   
+  }
+}
+
+@media (min-width: 992px) and (max-width:1199px) {
+  .WeatherApp{
+    align-items: center;
+    height: 40px;
+    background-color: yellow;
+  }
+    
+ 
+  .container-searchbar{
+    width: 85%;
+    height: 60px;
+   
+  }
+  .container-two{
+    min-height: 90vh;
+    min-width: 90%;
+    position: absolute;
+    left: -14%;
+    top: 20%;
+
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .WeatherApp{
+    align-items: center;
+    height: 50px;
+    background-color: red;
+  }
+   
+
+  .container-searchbar{
+    width: 80%;
+    height: 70px;
+    
+   
+  }
+  .container-two{
+    min-height: 80vh;
+    min-width: 100%;
+    position: absolute;
+   
+    top: 25%;
+  }
+  }
+
+
+  

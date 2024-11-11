@@ -93,10 +93,7 @@
     transform: scale(1.1);
   }
   
-  .humiditytext {
-    margin-right: 2em;
-    transform: scale(1.05);
-  }
+
   
   .humidity img,
   .wind img,
@@ -107,6 +104,11 @@
     transform: scale(1.1);
   }
   
+  .humiditytext {
+    margin-right: 2em;
+    transform: scale(1.05);
+  }
+
   .feelsliketext {
     margin-right: 1.5em;
     transform: scale(1.05);
@@ -119,4 +121,90 @@
   
 
 
+  
+  @media (max-width: 600px) {
+    
+    .cardm, .cardone, .degrees, .day, .cardtwo, .lower, .humidity img, .wind img, .feelslike img {
+      transform: scale(1.0);
+      
+    }
+    .humiditytext, .feelsliketext, .windtext {
+      transform: scale(1.0); 
+    }
+  }
+  
+
+  @media (max-width: 601px) {
+    
+    .cardm, .cardone, .degrees, .day, .cardtwo, .lower, .humidity img, .wind img, .feelslike img {
+      transform: scale(1.0);
+    
+    }
+    .humiditytext, .feelsliketext, .windtext {
+      transform: scale(1.0); 
+    }
+  }
+
+  @media (min-width: 768px) {
+    
+    .cardm, .cardone, .degrees, .day, .cardtwo, .lower, .humidity img, .wind img, .feelslike img {
+      transform: scale(1.0);
+      
+    }
+    .humiditytext, .feelsliketext, .windtext {
+      transform: scale(1.0); 
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    
+    .cardm, .cardone, .degrees, .day, .cardtwo, .lower, .humidity img, .wind img, .feelslike img {
+      transform: scale(0.95);
+      
+    }
+    .humiditytext, .feelsliketext, .windtext {
+      transform: scale(1.0); 
+    }
+
+    .cardm{
+      gap: 5px;
+      right:65px;
+    }
+  }
+
+
+
+  @media (min-width: 1200px) and (max-width:1599px){
+   
+    .cardm, .cardone, .degrees, .day, .cardtwo, .lower, .humidity img, .wind img, .feelslike img {
+      transform: scale(0.95);
+   
+    }
+
+    .cardm{
+      gap: 5px;
+      right: 6%;
+    }
+    
+    .humiditytext, .feelsliketext, .windtext {
+      transform: scale(1.0); 
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    
+    .cardm, .cardone, .degrees, .day, .cardtwo, .lower, .humidity img, .wind img, .feelslike img {
+      transform: scale(0.95);
+   
+    }
+
+    .cardm{
+      gap: 5px;
+    
+    }
+    
+    .humiditytext, .feelsliketext, .windtext {
+      transform: scale(1.0); 
+    }
+  }
  
